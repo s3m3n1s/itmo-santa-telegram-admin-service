@@ -17,11 +17,11 @@ export const encodeMessageTypeToEmoji = (type: string) => {
 
 export const translateDeliverStatus = (status: string) => {
   switch (status) {
-    case 'pending':
+    case 'PENDING':
       return 'Обрабатывается ⌛';
-    case 'delivered':
+    case 'DELIVERED':
       return 'Готово к выдаче 📫';
-    case 'received':
+    case 'RECEIVED':
       return 'Выдано ✨';
     default:
       return 'Обрабатывается ⌛';

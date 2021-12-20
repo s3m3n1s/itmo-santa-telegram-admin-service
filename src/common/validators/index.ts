@@ -5,7 +5,7 @@ export const validateGiftCode = (giftCode: number) => {
       msg: 'Код подарка должен быть числом',
     };
   }
-  if (giftCode.toString().length !== 4) {
+  if (giftCode.toString().length !== 6) {
     return {
       status: false,
       msg: 'Длина кода подарка должна составлять 4 цифры',

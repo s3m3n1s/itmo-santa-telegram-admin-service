@@ -15,7 +15,7 @@ export class GiftsService {
   }
 
   async takeGift(giftCode: number, id: string) {
-    const status = 'delivered';
+    const status = 'DELIVERED';
     const headersConfig = generateHeaders(id);
 
     try {
@@ -38,7 +38,7 @@ export class GiftsService {
   }
 
   async giveGift(giftCode: number, id: string) {
-    const status = 'received';
+    const status = 'RECEIVED';
     const headersConfig = generateHeaders(id);
 
     try {
@@ -70,9 +70,7 @@ export class GiftsService {
         headersConfig,
       });
 
-      const gift = res.data.find(
-        (g) => g.giftCode.toString() === giftCode.toString(),
-      );
+      const gift = res;
 
       if (gift?.giftCode) {
         return `Подарок #${

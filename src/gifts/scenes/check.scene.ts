@@ -26,6 +26,14 @@ export class CheckScene {
   @On('message')
   async checkGift(@Ctx() ctx) {
     const code = ctx.update.message.text;
+    if (code === '/take') {
+      await ctx.scene.enter('TAKE_SCENE');
+      return;
+    }
+    if (code === '/give') {
+      await ctx.scene.enter('GIVE_SCENE');
+      return;
+    }
     const { id } = ctx.from;
 
     const validation = validateGiftCode(code);

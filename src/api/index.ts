@@ -13,17 +13,21 @@ export const updateGiftStatusAPI = async ({
   status: string;
   headersConfig: Headers;
 }): Promise<any> => {
-  const data = await axios.patch(
-    `${process.env.REST_API}/gifts/updateByCode/${giftCode}/${status}`,
-    {},
-    {
-      headers: {
-        ...headersConfig,
+  try {
+    const data = await axios.patch(
+      `${process.env.REST_API}/gifts/updateByCode/${giftCode}/${status}`,
+      {},
+      {
+        headers: {
+          ...headersConfig,
+        },
       },
-    },
-  );
+    );
 
-  return data;
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const getGiftStatusAPI = async ({
@@ -33,14 +37,19 @@ export const getGiftStatusAPI = async ({
   giftCode: number;
   headersConfig: Headers;
 }): Promise<any> => {
-  const data = await axios.get(
-    `${process.env.REST_API}/gifts/getBy/giftCode/${giftCode}`,
-    {
-      headers: {
-        ...headersConfig,
+  try {
+    const { data } = await axios.get(
+      `${process.env.REST_API}/gifts/getBy/giftCode/${giftCode}`,
+      {
+        headers: {
+          ...headersConfig,
+        },
       },
-    },
-  );
+    );
 
-  return data;
+    return data;
+  } catch (err) {
+    console.log(err);
+    return err.response.data || 'Произошла ошибка';
+  }
 };
